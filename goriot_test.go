@@ -188,23 +188,24 @@ func TestMatchByMatchIDWithTimeline(t *testing.T) {
 	fmt.Println("done")
 }
 
-func TestMatchHistoryBySummonerID(t *testing.T) {
+func TestMatchListBySummonerID(t *testing.T) {
 	SetAPIKey(personalkey)
-	_, err := MatchHistoryBySummonerID(
-		NA, 24199871, nil, nil, -1, -1)
+	_, err := MatchListBySummonerID(
+		NA, 24199871, nil, nil, nil, -1, -1, -1, -1)
 	if err != nil {
 		t.Error(err.Error())
 	}
 	fmt.Println("done")
 }
 
-func TestMatchHistoryBySummonerIDWithFilters(t *testing.T) {
+func TestMatchListBySummonerIDWithFilters(t *testing.T) {
 	SetAPIKey(personalkey)
 	champions := []int64{11, 45}
 	queues := []string{"RANKED_SOLO_5x5", "RANKED_TEAM_3x3", "RANKED_TEAM_5x5"}
+	seasons := []string{"SEASON3"}
 
-	_, err := MatchHistoryBySummonerID(
-		NA, 24199871, champions, queues, 1, -1)
+	_, err := MatchListBySummonerID(
+		NA, 24199871, champions, queues, seasons, 1398902400, -1, -1, -1)
 	if err != nil {
 		t.Error(err.Error())
 	}
